@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+</head>
+
+<body v-scope>
+
+    <input type="text" v-model='fname'>
+
+    <button @click = "greet"> Greet</button>
+
+    <h5>Welcome {{fname}}</h5>
+
+    <h2 v-if="isResponseVisible">It is great to meet you {{fname}}</h2>
+
+    <h2>People greeted</h2>
+
+    <ul>
+        <li v-for="person in people" >{{person}}</li>
+    </ul>
+
+</body>
+
+<script src="https://unpkg.com/petite-vue"></script>
+<script> 
+PetiteVue.createApp({
+
+    fname: "nobody",
+
+    isResponseVisible: false,
+
+    people: [],
+
+    greet(){
+        this.isResponseVisible = !this.isResponseVisible;
+        this.people.push(this.fname)
+    }
+
+}).mount()
+</script>
+</html>
